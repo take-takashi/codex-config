@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conventional Commit JA"
+  short_description: "Conventional Commitsを日本語で作成"
+  default_prompt: "Use $commit-conventional-ja to split the current diff into meaningful, chronological Japanese Conventional Commits with verification notes."

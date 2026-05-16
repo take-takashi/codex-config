@@ -1,0 +1,7 @@
+interface:
+  display_name: "Python TDD Implementation"
+  short_description: "Python実装をTDDで安全に進める"
+  default_prompt: "Use $python-tdd-implementation to implement Python code with t-wada TDD, simple logic, no fallback, Japanese comments, and mise/uv verification when the project is managed by mise."
+
+policy:
+  allow_implicit_invocation: true

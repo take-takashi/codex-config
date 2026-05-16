@@ -1,0 +1,4 @@
+interface:
+  display_name: "Go TDD Implementation"
+  short_description: "Go実装をt-wada式TDDで進める。"
+  default_prompt: "Use Go TDD Implementation to implement this Go change with tests first, boundary cases, Japanese test comments, pseudocode comments before implementation, and clear design."
