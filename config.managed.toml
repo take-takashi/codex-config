@@ -1,0 +1,72 @@
+# BEGIN codex-config managed: common
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+web_search = "live"
+
+# notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
+# notify = ["bash", "-lc", "\a"]
+
+# full-auto mode
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+personality = "pragmatic"
+approvals_reviewer = "guardian_subagent"
+
+# Optional: ワークスペース書き込みモードでネットワークを許可
+[sandbox_workspace_write]
+writable_roots = ["/tmp", "/var/cache", "/workspaces"] # 作業外でも書き込み許可
+network_access = true                                  # ネットワークアクセス許可
+exclude_tmpdir_env_var = true                          # $TMPDIR を除外
+exclude_slash_tmp = false                              # /tmp を許可
+
+[features]
+multi_agent = true
+prevent_idle_sleep = true
+terminal_resize_reflow = true
+
+[agents]
+max_threads = 10
+
+[agents.security]
+description = "攻撃者視点でセキュリティ脆弱性を探す専門エージェント"
+config_file = "agents/security.toml"
+
+[agents.reliability]
+description = "本番障害視点で信頼性リスクを探す専門エージェント"
+config_file = "agents/reliability.toml"
+
+[tui]
+status_line = [
+    "model-with-reasoning",
+    "context-remaining",
+    "current-dir",
+    "project-root",
+    "git-branch",
+    "five-hour-limit",
+]
+theme = "catppuccin-frappe"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[tui.keymap.editor]
+insert_newline = ["ctrl-j", "enter"]
+
+[tui.keymap.composer]
+submit = "alt-enter"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+# END codex-config managed: common

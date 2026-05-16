@@ -1,0 +1,18 @@
+# Manual execution policy rules
+# Reference: https://raw.githubusercontent.com/openai/codex/main/codex-rs/execpolicy/README.md
+
+prefix_rule(
+    pattern = ["git"],
+    decision = "allow",
+    justification = "開発ワークフローで git コマンドを常時利用するため",
+    match = ["git status", ["git", "commit", "-m", "msg"]],
+    not_match = ["mise --version", ["npm", "test"]],
+)
+
+prefix_rule(
+    pattern = ["mise"],
+    decision = "allow",
+    justification = "ツールチェーン管理で mise コマンドを常時利用するため",
+    match = ["mise --version", ["mise", "run", "test"]],
+    not_match = ["git status", ["node", "-v"]],
+)
